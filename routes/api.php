@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HealthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // El prefijo `/api/v1` se aplica en `bootstrap/app.php` (withRouting apiPrefix).
@@ -15,4 +16,9 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 // Autenticados con Bearer JWT (CA-01.3):
 Route::middleware('jwt.auth')->group(function (): void {
     Route::get('/categories', [CategoryController::class, 'index']);
+
+    // Solo admin (HU-02, api-contract.md §3.2):
+    Route::middleware('role:admin')->group(function (): void {
+        Route::post('/users', [UserController::class, 'store']);
+    });
 });
