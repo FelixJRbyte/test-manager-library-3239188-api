@@ -1,0 +1,11 @@
+.env
+.env.*
+.git
+.gitignore
+.phpunit.cache
+.phpunit.result.cache
+vendor
+composer.lock
+storage/logs/*
+storage/app/covers/*
+bootstrap/cache/*.php
