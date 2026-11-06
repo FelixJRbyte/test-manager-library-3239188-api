@@ -1,0 +1,26 @@
+# Secretos y configuración local (Art. IX): nunca se versionan
+.env
+.env.*
+!.env.example
+opencode.json
+.opencode/
+
+# Dependencias: se instalan con `composer install`
+/vendor/
+composer.lock
+
+# Cachés y resultados de pruebas
+.phpunit.result.cache
+.phpunit.cache/
+/bootstrap/cache/*
+!/bootstrap/cache/.gitignore
+
+# Portadas subidas en ejecución (el binario no se versiona)
+/storage/app/covers/
+
+# Registros y basura del editor o del sistema
+*.log
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
